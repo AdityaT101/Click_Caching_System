@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        //this is the AJAX to POST the data on server
+        var postHttpRequest = function (url, postData, callback) {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    callback(request.responseText);
+                }
+            }
+            request.open("POST", window.location.origin + url, true);
+            request.setRequestHeader("Content-Type", "application/json");
+            request.send(JSON.stringify(postData));
+        }
+    </script>
+</head>
+
+<body>
+<script type="text/javascript">
+    var i = 1;
+    function myFunction() {
+        var k = 0;
+        var button = document.createElement("button");
+        var button1 = document.createElement("button");
+
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "text");
+
+        var t = document.createTextNode("Counter " + i);
+        button.appendChild(t);
+        button.style.color = 'white';
+        button.style.backgroundColor = "#4CAF50";
+        button.style.padding = '15px 32px';
+        button.style.display = 'inline';
+        button.style.fontSize = '16px';
+        button.style.margin = '4px 2px';
+        button.style.cursor = 'pointer';
+        button.id = i.toString();
+
+        var t1 = document.createTextNode("Disable  " + i);
+        button1.appendChild(t1);
+        button1.style.color = 'white';
+        button1.style.backgroundColor = "#e3360f";
+        button1.style.padding = '15px 32px';
+        button1.style.display = 'inline-block';
+        button1.style.fontSize = '16px';
+       // button1.style.margin = '50px 2px';
+        button1.style.cursor = 'pointer';
+
+
+        button1.onclick = function DisableButton() {
+            //document.getElementById("button").disabled = false;
+            document.getElementById(button.id).disabled = true;
+            button.style.backgroundColor = "#dde3de";
+            button.style.color = 'black';
+
+        }
+
+
+        button.onclick = function () {
+
+            k++;
+            x.setAttribute("value", k)
+            var todayDate = new Date();//the time of click is sent on the server side
+
+            myFunction1(button.id, k, new Date(todayDate.setHours(todayDate.getHours() - 7)));
+
+            return false;
+        };
+         x.style.display = 'block';
+        document.body.appendChild(button);
+        document.body.appendChild(button1);
+        document.body.appendChild(x);
+        i++;
+    }
+
+
+</script>
+<script type="text/javascript">
+    //The Data is Packed and sent to AJAX function for sending to the server
+    function myFunction1(count1, count2, count3) {
+        postHttpRequest("/setCount", [{"data1": count1, "data2": count2, "data3": count3}], function (data) {
+
+        });
+    }
+</script>
+
+<input type="button" class="button" value="Create Counter" onclick="myFunction()">
+
+
+</body>
+</html>
+
+
