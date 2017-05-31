@@ -29,6 +29,7 @@ exports.SaveRecords = function (req, res) {
                     else console.log(" structure could not be created");
                 });
             }
+            db.close();
         })
 
      });
@@ -42,16 +43,6 @@ exports.SaveRecords = function (req, res) {
             }
     });
 
-
-   /* setTimeout(function () {
-        SC.Schema(counter, function (data) {
-
-            console.log("callback: "+data);
-
-        });
-    }, 10000);*/
-
-   // res.render('query', {CounterNumber: "123", password1:"aditya"});
 
    /* MongoClient.connect(url, function (err, db) {
 

@@ -47,7 +47,7 @@ exports.InsertData = function (counter, callback) {
                     }, 200);
                 }
             }
-
+            db.close();
         });
 
     });

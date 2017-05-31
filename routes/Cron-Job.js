@@ -19,7 +19,7 @@ exports.start = function (p1) {
     client.lrange(p1, 0, -1, function (err, object) {
         Mongo.SaveRecords(p5, object, function (err) {
             if (err) return console.log(err);
-            else connsole.log("data Sent to MongoDB");
+            else console.log("data Sent to MongoDB");
         });
     });
 

@@ -28,6 +28,7 @@ exports.SaveRecords = function (No_Records, object, callback) {
                     function (err1) {
                         if (err1) throw err1;
                         console.log("1 record inserted");
+                        db.close();
                     });
 
             }

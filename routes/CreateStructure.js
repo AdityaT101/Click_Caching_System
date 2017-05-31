@@ -3,7 +3,6 @@
  */
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/textmonkey";
-var MongoCreate = require('./CreateStructure');
 
 exports.CreateStructure = function (counter, callback) {
 
@@ -38,7 +37,7 @@ exports.CreateStructure = function (counter, callback) {
                         function (err2) {
                             if (err2) throw err2;
                             console.log("structure made ");
-
+                            db.close();
                         });
                 
             }
@@ -47,7 +46,7 @@ exports.CreateStructure = function (counter, callback) {
         });
 
 
-    }
+}
 
 exports.UpdateStructure = function (counter, callback) {
 
@@ -78,6 +77,8 @@ exports.UpdateStructure = function (counter, callback) {
         }
         else
             console.log(err);
+
+        db.close();
     });
 
 

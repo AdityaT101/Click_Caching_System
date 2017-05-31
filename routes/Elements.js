@@ -20,6 +20,7 @@ exports.Find1 = function (counter, callback){
             console.log("Past Hour :-    "+answer);
 
             callback(answer);
+            db.close();
         });
     });
 }
@@ -38,7 +39,7 @@ exports.Find3 = function (counter, callback){
             console.log("Past 3 Hours :-    "+answer);
             // res.render('query', {CounterNumber: answer});
             callback(answer);
-
+            db.close();
         });
     });
 }
@@ -56,7 +57,7 @@ exports.Find6 = function (counter, callback){
             answer = json["6"]["count"];
             console.log("Past 6 Hours :-    "+answer);
             callback(answer);
-
+            db.close();
         });
     });
 }
@@ -74,6 +75,7 @@ exports.Find12 = function (counter, callback){
             answer = json["12"]["count"];
             console.log("Past 12 Hours :-    "+answer);
             callback(answer);
+            db.close();
         });
     });
 }
@@ -91,6 +93,7 @@ exports.Find24 = function (counter, callback){
             answer = json["24"]["count"];
             console.log("Past 24 Hours :-    "+answer);
             callback(answer);
+            db.close();
         });
     });
 }
@@ -108,6 +111,7 @@ exports.FindAlltime = function (counter, callback){
             answer = json["Alltime"]["count"];
             console.log("Alltime :-    "+answer);
             callback(answer);
+            db.close();
         });
     });
 }
