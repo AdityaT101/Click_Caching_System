@@ -1,86 +1,77 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/textmonkey";
+var Element = require('./Elements');
 
 exports.Schema = function (counter, callback) {
 
+    console.log( "Counter_Number :- " +counter )
+
     MongoClient.connect(url, function (err, db) {
-        var input = [];
-        var myquery = {_id: counter};
-       // console.log("answer");
-        var newvalues = {"hours.1.count":1, _id: 0};
-        db.collection("testtwo").find( myquery, newvalues ).toArray(function (err, result) {
-            if (err) throw err;
-            var json = result[0].hours;
-            answer = json["1"]["count"];
-            console.log(answer);
-            input.push(answer);
 
-            //    res.render('query', {CounterNumber: answer});
+        var input= []
 
+
+        Element.Find1(counter, function(data1) {
+            if(data1)
+            {
+                input.push(data1);
+
+                Element.Find3(counter, function(data3) {
+                    if(data3)
+                    {
+                        input.push(data3);
+
+
+                        Element.Find6(counter, function(data6) {
+                            if(data6)
+                            {
+                                input.push(data6);
+
+                                
+                                Element.Find12(counter, function(data12) {
+                                    if(data12)
+                                    {
+                                        input.push(data12);
+
+
+                                        Element.Find24(counter, function(data24) {
+                                            if(data24)
+                                            {
+                                                input.push(data24);
+
+
+                                                Element.FindAlltime(counter, function(dataAlltime) {
+                                                    if(data24)
+                                                    {
+                                                        input.push(dataAlltime);
+                                                       // console.log(input);
+                                                        callback(input)
+
+                                                    }
+
+                                                });
+
+
+                                            }
+
+                                        });
+
+
+                                    }
+
+                                });
+
+                            }
+
+                        });
+
+
+                    }
+
+                });
+            }
         });
 
-
-
-        var newvalues3 = {"hours.3.count":1, _id: 0};
-        db.collection("testtwo").find( myquery, newvalues3 ).toArray(function (err, result) {
-            if (err) throw err;
-            var json = result[0].hours;
-       //     answer = json["3"]["count"];
-            console.log(answer);
-            // res.render('query', {CounterNumber: answer});
-            input.push(answer);
-
-        });
-
-        var newvalues6 = {"hours.6.count":1, _id: 0};
-        db.collection("testtwo").find( myquery, newvalues6 ).toArray(function (err, result) {
-            if (err) throw err;
-            var json = result[0].hours;
-            answer = json["6"]["count"];
-            console.log(answer);
-            // res.render('query', {"hours.6.count": answer});
-            input.push(answer);
-
-        });
-
-        var newvalues12 = {"hours.12.count":1, _id: 0};
-        db.collection("testtwo").find( myquery, newvalues12 ).toArray(function (err, result) {
-            if (err) throw err;
-            var json = result[0].hours;
-            answer = json["12"]["count"];
-            console.log(answer);
-            //  res.render('query', {"hours.12.count": answer});
-            input.push(answer);
-
-
-        });
-
-        var newvalues24 = {"hours.24.count":1, _id: 0};
-        db.collection("testtwo").find( myquery, newvalues24 ).toArray(function (err, result) {
-            if (err) throw err;
-            var json = result[0].hours;
-            answer = json["24"]["count"];
-            console.log(answer);
-            //   res.render('query', {"hours.24.count": answer});
-            input.push(answer);
-
-        });
-
-        var newvaluesAlltime = {"hours.Alltime.count":1, _id: 0};
-
-        db.collection("testtwo").find( myquery, newvaluesAlltime).toArray(function (err, result) {
-            if (err) throw err;
-            var json = result[0].hours;
-            answer = json["Alltime"]["count"];
-            console.log(answer);
-            // res.render('query', {"hours.Alltime.count": answer});
-                  input.push(answer);
-
-
-        });
-
-        //db.testtwo.find({_id: "2"},{"hours.1.count":1,_id: 0})
-        console.log(input[0]);
 
     });
 

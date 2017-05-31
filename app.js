@@ -49,10 +49,9 @@ app.get('/counter', counter.InsertCount);
 
 
 //Run a CRON job after every specific time. This cron shall get all the values associated with the key
-cron.schedule('*/10 * * * * *', function () {
+cron.schedule('* * * * * *', function () {
   console.log('running a task every 10 secs');
-
-    client.keys('*', function (err, keys) {//fetching the values associated with the key.
+  client.keys('*', function (err, keys) {//fetching the values associated with the key.
         if (err) return console.log(err);
        for (var i = 0, len = keys.length; i < len; i++) {
             cronObject.start(keys[i]);

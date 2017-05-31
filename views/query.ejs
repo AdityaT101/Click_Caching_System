@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
 <form>
     <div>
-        <p> The CounterNumber You entered is        :     <%= CounterNumber %> </P>
-        <p> The password You entered is        :     <%= password1 %> </P>
 
-    </div>
+        <h2>The Click Table for counter <%= CounterNumber %></h2>
+        <table>
+            <tr>
+                <th>Past Hour</th>
+                <th>Past 3 Hours</th>
+                <th>Past 6 Hours</th>
+                <th>Past 12 Hours</th>
+                <th>Past 24 Hours</th>
+                <th>All Time</th>
+
+            </tr>
+            <tr>
+                <td><%= last1 %></td>
+                <td><%= last3 %></td>
+                <td><%= last6 %></td>
+                <td><%= last12 %></td>
+                <td><%= last24 %></td>
+                <td><%= lastAlltime %></td>
+
+            </tr>
+        </table>
+
+</div>
 </form>
 
 </body>
