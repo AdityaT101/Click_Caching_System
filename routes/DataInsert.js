@@ -44,7 +44,7 @@ exports.InsertData = function (counter, callback) {
                     setTimeout(function () {
                         var a = 1;
                         callback(a);
-                    }, 200);
+                    }, 250);
                 }
             }
             db.close();
