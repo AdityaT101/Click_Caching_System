@@ -73,6 +73,7 @@ exports.Insert = function (counter,diffMins, callback) {
                 //console.log(res.result.nModified + " record updated");
                 db.close();
             });
+            callback(1);
         }
 
 

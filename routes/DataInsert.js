@@ -32,9 +32,9 @@ exports.InsertData = function (counter, callback) {
                 var diffMins = Math.floor(leftSec / (60));
                 console.log(diffMins);
 
-                Mongo.Insert(counter, diffMins, function insert (err) {
-                    if (err) return console.log(err);
-                    else console.log(" data Sent to MongoDB");
+                Mongo.Insert(counter, diffMins, function insert (data) {
+                    if (data)
+                       console.log(" data Sent to MongoDB");
                 });
 
                 if (i == (result.length)) {
