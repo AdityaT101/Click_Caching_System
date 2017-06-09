@@ -15,3 +15,9 @@ MongoClient.connect(url, function (err, db) {
     });
 
 });
+
+
+function abc(err) {
+if (!err)
+    console.log("abc");
+}
