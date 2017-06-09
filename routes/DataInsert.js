@@ -26,7 +26,7 @@ exports.InsertData = function (counter, callback) {
                 var years = Math.floor(diff / (365 * 24 * 60 * 60));
                 var leftSec = diff - years * 365 * 24 * 60 * 60;
                 var diffMins = Math.floor(leftSec / (60));
-
+                console.log(diffMins);
                 Mongo.Insert(counter, diffMins, function (err) {
                     if (err) return console.log(err);
                     else console.log(" data Sent to MongoDB");
