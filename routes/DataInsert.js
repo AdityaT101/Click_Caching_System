@@ -35,21 +35,18 @@ exports.InsertData = function (counter, callback) {
                     if (err) return console.log(err);
                     else {
                         console.log(" data Sent to MongoDB");
-                        /*if (a == (result.length)) {
-                            console.log("a = "+a)
-                            console.log("result.length = "+result.length)
-                            var b = 1;
-                            callback(b);
-                        }*/
+
                     }
 
                 });
 
+                 if (i == (result.length-1)) {
+                    setTimeout(function(){  var b = 1;
+                        callback(b); }, 3000);
+                }
+
             }
-
-
         });
     });
-
 
 }
