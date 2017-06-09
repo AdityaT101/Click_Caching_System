@@ -38,7 +38,7 @@ exports.InsertData = function (counter, callback) {
                     setTimeout(function () {
                         var b = 1;
                         callback(b);
-                    }, 10000);
+                    }, 3000);
                 }
 
             }
