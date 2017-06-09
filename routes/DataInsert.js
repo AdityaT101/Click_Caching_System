@@ -36,6 +36,8 @@ exports.InsertData = function (counter, callback) {
                     else {
                         console.log(" data Sent to MongoDB");
                         if (a == (result.length)) {
+                            console.log("a = "+a)
+                            console.log("result.length = "+result.length)
                             var b = 1;
                             callback(b);
                         }
