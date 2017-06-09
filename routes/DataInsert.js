@@ -7,16 +7,16 @@ var SC = require('./SchemaOfDocument');
 
 exports.InsertData = function (counter, callback) {
 
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, function (err, db)
+    {
         var hours = null;
         var diffMins = 0;
         var query = {counter: counter};
 
-        db.collection("text").find(query).toArray(function abc(err, result) {
+        db.collection("text").find(query).toArray(function abc (err, result) {
             if (err) throw err;
-            var a = 0;
+
             for (var i = 0; i <= result.length - 1; i++) {
-                a++;
                 var EarlierTime = new Date(result[i].time);//----------------****---------------
                 console.log(EarlierTime);
                 var todayDate = new Date();
@@ -31,22 +31,27 @@ exports.InsertData = function (counter, callback) {
                 var diffMins = Math.floor(leftSec / (60));
                 console.log(diffMins);
 
-                Mongo.Insert(counter, diffMins, function (err) {
-                    if (err) return console.log(err);
-                    else {
-                        console.log(" data Sent to MongoDB");
+                Mongo.Insert(counter, diffMins, insert);
 
-                    }
-
-                });
-
-                 if (i == (result.length-1)) {
-                    setTimeout(function(){  var b = 1;
-                        callback(b); }, 3000);
+                if (i == (result.length - 1)) {
+                    setTimeout(function () {
+                        var a = 1;
+                        callback(a);
+                    }, 1000);
                 }
 
             }
+
         });
+        function insert (err) {
+            if (err) return console.log(err);
+            else console.log(" data Sent to MongoDB");
+        }
+
     });
+
+
+
+
 
 }
