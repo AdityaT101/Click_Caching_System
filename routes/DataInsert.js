@@ -43,7 +43,7 @@ exports.InsertData = function (counter, callback) {
                     }, 250);
                 }
             }
-            db.close();
+
         });
 
     });
