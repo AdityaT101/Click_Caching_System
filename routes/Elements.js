@@ -3,13 +3,12 @@
  */
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/textmonkey";
+var url = "mongodb://AdityaT101:kale123@ds019966.mlab.com:19966/textmonkey1";
 var MongoCreate = require('./CreateStructure');
 
 exports.Find1 = function (counter, callback){
 
     MongoClient.connect(url, function (err, db) {
-
         var myquery = {_id: counter};
         var newvalues = {"hours.1.count":1, _id: 0};
 

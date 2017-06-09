@@ -1,8 +1,6 @@
-/**
- * Created by Aditya on 5/31/2017.
- */
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/textmonkey";
+var url = "mongodb://AdityaT101:kale123@ds019966.mlab.com:19966/textmonkey1";
+
 var Mongo = require('./MongoInsert');
 var MongoCreate = require('./CreateStructure');
 var SC = require('./SchemaOfDocument');
@@ -20,13 +18,8 @@ exports.InsertData = function (counter, callback) {
 
             for (var i = 0; i <= result.length - 1; i++) {
                 var EarlierTime = new Date(result[i].time);//----------------****---------------
-
-             //   console.log("length is :-" +result.length);
                 var todayDate = new Date();
-
                 var presentTime = new Date(todayDate.setHours(todayDate.getHours() - 7))//----------------****---------------
-
-                //console.log(presentTime);
                 var diffMs = (presentTime - EarlierTime);
                 var diff = diffMs / 1000;
                 var diff = Math.abs(Math.floor(diff));
@@ -51,7 +44,5 @@ exports.InsertData = function (counter, callback) {
         });
 
     });
-
-
 
 }

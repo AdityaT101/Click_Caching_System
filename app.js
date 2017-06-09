@@ -10,8 +10,9 @@ var users = require('./routes/users');
 var counter = require('./routes/counter');
 var redis1 = require('./routes/redis');
 var cron = require('node-cron');
-var redis = require('redis');
-var client = redis.createClient();
+
+var client = require('redis').createClient(6379, 'version1.7m5dyg.ng.0001.use2.cache.amazonaws.com', {no_ready_check: true})
+
 var cronObject = require('./routes/Cron-Job');
 var server = require('./routes/server');
 var PastDocuments = require('./routes/PastDocuments');
@@ -47,17 +48,15 @@ app.use(function (err, req, res, next) {
 app.post('/setCount', redis1.RedisInsert);
 app.get('/counter', counter.InsertCount);
 
-
 //Run a CRON job after every specific time. This cron shall get all the values associated with the key
 cron.schedule('* * * * * *', function () {
-  console.log('running a task every 10 secs');
+  console.log('running a task every 1 sec');
   client.keys('*', function (err, keys) {//fetching the values associated with the key.
         if (err) return console.log(err);
        for (var i = 0, len = keys.length; i < len; i++) {
             cronObject.start(keys[i]);
         }
     });
-
 });
 
 app.get('/FindResults',server.find);

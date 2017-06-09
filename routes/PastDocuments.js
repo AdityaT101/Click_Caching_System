@@ -1,5 +1,7 @@
+
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/textmonkey";
+var url = "mongodb://AdityaT101:kale123@ds019966.mlab.com:19966/textmonkey1";
+
 var Mongo = require('./MongoInsert');
 var MongoCreate = require('./CreateStructure');
 var SC = require('./SchemaOfDocument');
@@ -10,7 +12,6 @@ exports.SaveRecords = function (req, res) {
     var counter = req.body.CounterNumber;
 
     MongoClient.connect(url, function (err, db) {
-
         var myquery = {_id: counter};
         db.collection("testtwo").find(myquery).count(function (err, result) {
             if (err) throw err;
@@ -43,19 +44,6 @@ exports.SaveRecords = function (req, res) {
             }
     });
 
-
-   /* MongoClient.connect(url, function (err, db) {
-
-     var myquery = {_id: counter};
-     db.collection("testtwo").remove(myquery, function (err, res) {
-     if (err) throw err;
-     console.log(" table deleted");
-     db.close();
-     });
-
-     //db.getCollection('testtwo').remove({_id:1})
-
-     });*/
 }
 
 
