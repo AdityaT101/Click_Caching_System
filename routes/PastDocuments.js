@@ -20,14 +20,35 @@ exports.SaveRecords = function (req, res) {
             {
                 MongoCreate.UpdateStructure(counter, function (err) {
                     if (err) return console.log(err);
-                    else console.log(" structure could not be created");
+                    else
+                    {
+                        DataInsert.InsertData(counter, function(data){
+                            if(data)
+                            {
+                                SC.Schema(counter, function (data) {
+                                    res.render('query', {CounterNumber: counter ,last1: data[0],last3: data[1],last6: data[2],last12: data[3],last24: data[4],lastAlltime: data[5]});
+                                });
+                            }
+                        });
+
+                    }
                 });
             }
             else
             {
                 MongoCreate.CreateStructure(counter, function (err) {
                     if (err) return console.log(err);
-                    else console.log(" structure could not be created");
+                    else {
+                        DataInsert.InsertData(counter, function(data){
+                            if(data)
+                            {
+                                SC.Schema(counter, function (data) {
+                                    res.render('query', {CounterNumber: counter ,last1: data[0],last3: data[1],last6: data[2],last12: data[3],last24: data[4],lastAlltime: data[5]});
+                                });
+                            }
+                        });
+
+                    }
                 });
             }
             db.close();
@@ -35,14 +56,7 @@ exports.SaveRecords = function (req, res) {
 
      });
 
-    DataInsert.InsertData(counter, function(data){
-         if(data)
-            {
-                SC.Schema(counter, function (data) {
-                    res.render('query', {CounterNumber: counter ,last1: data[0],last3: data[1],last6: data[2],last12: data[3],last24: data[4],lastAlltime: data[5]});
-                });
-            }
-    });
+
 
 }
 
