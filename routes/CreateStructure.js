@@ -2,7 +2,7 @@
  * Created by Aditya on 5/29/2017.
  */
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/textmonkey";
+var url = "mongodb://AdityaT101:kale123@ds019966.mlab.com:19966/textmonkey1";
 
 exports.CreateStructure = function (counter, callback) {
 

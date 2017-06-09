@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/textmonkey";
+var url = "mongodb://AdityaT101:kale123@ds019966.mlab.com:19966/textmonkey1";
 var MongoCreate = require('./CreateStructure');
 
 exports.Insert = function (counter,diffMins, callback) {
@@ -73,6 +73,7 @@ exports.Insert = function (counter,diffMins, callback) {
                 //console.log(res.result.nModified + " record updated");
                 db.close();
             });
+            callback(1);
         }
 
 
