@@ -14,10 +14,10 @@ MongoClient.connect(url, function (err, db) {
        console.log(result[0].time);
     });
 
+    function abc(err) {
+        if (!err)
+            console.log("abc");
+    }
 });
 
 
-function abc(err) {
-if (!err)
-    console.log("abc");
-}

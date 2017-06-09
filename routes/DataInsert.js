@@ -11,10 +11,10 @@ exports.InsertData = function (counter, callback) {
         var hours = null;
         var diffMins = 0;
         var query = {counter: counter};
-        var a = 0;
+
         db.collection("text").find(query).toArray(function abc(err, result) {
             if (err) throw err;
-
+            var a = 0;
             for (var i = 0; i <= result.length - 1; i++) {
                 a++;
                 var EarlierTime = new Date(result[i].time);//----------------****---------------
