@@ -8,12 +8,11 @@ var SC = require('./SchemaOfDocument');
 exports.InsertData = function (counter, callback) {
 
     MongoClient.connect(url, function (err, db) {
-
         var hours = null;
         var diffMins = 0;
         var query = {counter: counter};
 
-        db.collection("text").find(query).toArray(function (err, result) {
+        db.collection("text").find(query).toArray(function abc(err, result) {
             if (err) throw err;
 
             for (var i = 0; i <= result.length - 1; i++) {
@@ -30,22 +29,24 @@ exports.InsertData = function (counter, callback) {
                 var leftSec = diff - years * 365 * 24 * 60 * 60;
                 var diffMins = Math.floor(leftSec / (60));
                 console.log(diffMins);
-                Mongo.Insert(counter, diffMins, function (err) {
-                    if (err) return console.log(err);
-                    else console.log(" data Sent to MongoDB");
-                });
 
-                if(i == (result.length - 1) )
-                {
-                    setTimeout(function () {
-                        var a = 1;
-                        callback(a);
-                    }, 1000);
-                }
+                Mongo.Insert(counter, diffMins, insert);
             }
 
         });
 
-    });
+    }, abc);
 
+    function insert(err) {
+        if (err) return console.log(err);
+        else console.log(" data Sent to MongoDB");
+    }
+
+
+    function abc(err) {
+        if (!err) {
+            var a = 1;
+            callback(a);
+        }
+    }
 }
