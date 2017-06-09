@@ -15,8 +15,9 @@ exports.InsertData = function (counter, callback) {
 
         db.collection("text").find(query).toArray(function abc (err, result) {
             if (err) throw err;
-
+            var a =0;
             for (var i = 0; i <= result.length - 1; i++) {
+                a++;
                 var EarlierTime = new Date(result[i].time);//----------------****---------------
                 console.log(EarlierTime);
                 var todayDate = new Date();
@@ -33,11 +34,11 @@ exports.InsertData = function (counter, callback) {
 
                 Mongo.Insert(counter, diffMins, insert);
 
-                if (i == (result.length - 1)) {
+                if (i == (result.length)) {
                     setTimeout(function () {
-                        var a = 1;
-                        callback(a);
-                    }, 1000);
+                        var b = 1;
+                        callback(b);
+                    }, 10000);
                 }
 
             }
