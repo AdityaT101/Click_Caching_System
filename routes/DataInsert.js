@@ -18,8 +18,11 @@ exports.InsertData = function (counter, callback) {
 
             for (var i = 0; i <= result.length - 1; i++) {
                 var EarlierTime = new Date(result[i].time);//----------------****---------------
+                console.log(EarlierTime);
                 var todayDate = new Date();
                 var presentTime = new Date(todayDate.setHours(todayDate.getHours() - 7))//----------------****---------------
+                console.log(presentTime);
+
                 var diffMs = (presentTime - EarlierTime);
                 var diff = diffMs / 1000;
                 var diff = Math.abs(Math.floor(diff));
