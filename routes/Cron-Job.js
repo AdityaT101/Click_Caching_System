@@ -1,8 +1,7 @@
 /**
  * Created by Aditya on 5/27/2017.
  */
-var redis = require('redis');
-var client = redis.createClient();
+var client = require('redis').createClient(6379, 'version1.7m5dyg.ng.0001.use2.cache.amazonaws.com', {no_ready_check: true})
 var cron = require('node-cron');
 var Mongo = require('./MongoDB');
 
@@ -26,7 +25,6 @@ exports.start = function (p1) {
     //clear the cacche associated with that key.
     client.del(p1, function (err, object) {
         if (err) return console.log("problem while deleting");
-
     });
 
 };

@@ -1,8 +1,7 @@
 /**
  * Created by Aditya on 5/25/2017.
  */
-var redis = require('redis');
-var client = redis.createClient();
+var client = require('redis').createClient(6379, 'version1.7m5dyg.ng.0001.use2.cache.amazonaws.com', {no_ready_check: true})
 var cron = require('./Cron-Job');
 
 exports.RedisInsert = function (req, res) {
