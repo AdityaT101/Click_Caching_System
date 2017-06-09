@@ -40,7 +40,7 @@ exports.InsertData = function (counter, callback) {
                     setTimeout(function () {
                         var a = 1;
                         callback(a);
-                    }, 250);
+                    }, 1000);
                 }
             }
 
